@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const usuarios = [{
+        id: '001',
+        nome: 'Ayrton',
+        idade: 28,
+        email: 'programadorabordo@gmail.com',
+        foto: 'https://via.placeholder.com/300/200?id=1',
+        sexo: 'M',
+        estado: 'RJ',
+      },
+      {
+        id: '002',
+        nome: 'João',
+        idade: 33,
+        email: 'joao@gmail.com',
+        foto: 'https://via.placeholder.com/300/200?id=2',
+        sexo: 'M',
+        estado: 'PE',
+      },
+      {
+        id: '003',
+        nome: 'Maria',
+        idade: 25,
+        email: 'maria@gmail.com',
+        foto: 'https://via.placeholder.com/300/200?id=3',
+        sexo: 'F',
+        estado: 'RJ',
+      },
+      {
+        id: '004',
+        nome: 'Eduardo',
+        idade: 20,
+        email: 'eduardo@gmail.com',
+        foto: 'https://via.placeholder.com/300/200?id=4',
+        sexo: 'M',
+        estado: 'RS',
+      },
+      {
+        id: '005',
+        nome: 'Antônia',
+        idade: 30,
+        email: 'antonia@gmail.com',
+        foto: 'https://via.placeholder.com/300/200?id=5',
+        sexo: 'F',
+        estado: 'RJ',
+      },
+      {
+        id: '006',
+        nome: 'Joaquina',
+        idade: 35,
+        email: 'joaquina@gmail.com',
+        foto: 'https://via.placeholder.com/300/200?id=6',
+        sexo: 'F',
+        estado: 'TO',
+      },
+      {
+        id: '007',
+        nome: 'Mateus',
+        idade: 42,
+        email: 'mateus@gmail.com',
+        foto: 'https://via.placeholder.com/300/200?id=7',
+        sexo: 'M',
+        estado: 'MG',
+      },
+      {
+        id: '008',
+        nome: 'Davi',
+        idade: 19,
+        email: 'davi@gmail.com',
+        foto: 'https://via.placeholder.com/300/200?id=8',
+        sexo: 'M',
+        estado: 'MS',
+      },
+      {
+        id: '009',
+        nome: 'Angélica',
+        idade: 27,
+        email: 'angelica@gmail.com',
+        foto: 'https://via.placeholder.com/300/200?id=9',
+        sexo: 'F',
+        estado: 'RS',
+      },
+      {
+        id: '010',
+        nome: 'Fernando',
+        idade: 31,
+        email: 'fernando@gmail.com',
+        foto: 'https://via.placeholder.com/300/200?id=10',
+        sexo: 'M',
+        estado: 'SP',
+      }
+    ];
+
+    const questions = [{
+        name: 'Carlos',
+        respostas: [{
+            questao_id: '001',
+            acertou: true
+          },
+          {
+            questao_id: '002',
+            acertou: true
+          },
+          {
+            questao_id: '003',
+            acertou: false
+          },
+          {
+            questao_id: '004',
+            acertou: true
+          },
+          {
+            questao_id: '005',
+            acertou: true
+          },
+        ]
+      },
+      {
+        name: 'John',
+        respostas: [{
+            questao_id: '001',
+            acertou: false
+          },
+          {
+            questao_id: '002',
+            acertou: true
+          },
+          {
+            questao_id: '003',
+            acertou: false
+          },
+          {
+            questao_id: '004',
+            acertou: true
+          },
+          {
+            questao_id: '005',
+            acertou: false
+          },
+        ]
+      },
+    ]
+
+    /* {
+      '001': {
+        nome: '',
+        email: ''
+      },
+      '002': {
+        nome: '',
+        email: ''
+      }
+    } */
+
+    const usuariosNormalizados = usuarios.reduce(function (acumulador, usuario) {
+      acumulador[usuario.id] = usuario;
+      return acumulador;
+    }, {});
+
+    const user = usuarios.map(value => (
+      [
+        value.id,
+        value
+      ]
+    ))
+    const normalizedUsers = Object.fromEntries(user)
+    // console.log(normalizedUsers)
+    const allAnswers = questions.map(q => q.respostas).flat()
+    console.log(allAnswers)
+
+    const formattedQuestions = allAnswers.map(q => (
+      [
+        q.questao_id,
+        questions.filter(question => {
+          console.log(q.acertou);
+          return q.acertou
+        })
+      ]
+    ))
+    console.log(Object.fromEntries(formattedQuestions));
+
+
+    const cardNumber = '1234567891011123'
+    const lastFourNumbers = cardNumber.slice(-4)
+    console.log(lastFourNumbers.padStart(16, '*'));
+
+
+  </script>
+</body>
+
+</html>
